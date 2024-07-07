@@ -1,0 +1,128 @@
+<h1 class="mycolor1 myfont1">Rezervacije</h1>
+<div class="rounded" style="border:1px dashed rgb(100, 100, 100);padding: 5px;">
+    <h2 class="mycolor2 myfont1">Aktuelne rezervacije</h2>
+    <h3 class="warning" *ngIf="aktuelneRezervacije.length==0">Nema rezervacija</h3>
+    <div class="container table-responsive no_padding" *ngIf="aktuelneRezervacije.length>0"
+        style="max-height: 33vh;overflow-y: auto;border:1px solid black;">
+        <table class="with_borders table no_margin with_padding">
+            <tr>
+                <th>&nbsp;Termin rezervacije&nbsp;</th>
+                <th>&nbsp;Naziv restorana&nbsp;</th>
+                <th>&nbsp;Adresa restorana&nbsp;</th>
+            </tr>
+
+            <tr *ngFor=" let r of aktuelneRezervacije">
+                <td>&nbsp;{{odrediDatum(r.dan_posete,r.pocetak)}}
+                    <span *ngIf="mozeOtkazati(r)" style="display: inline-block;">
+                        &nbsp;
+                        <button class="btn mybutton1" (click)="otkaziRezervaciju(r.id)">Otkazi</button>
+                    </span>
+                    &nbsp;
+                </td>
+                <td>&nbsp;{{r.naziv_restorana}}&nbsp;</td>
+                <td>&nbsp;{{r.adresa_restorana}}&nbsp;</td>
+            </tr>
+        </table>
+    </div>
+    <br>
+    <span *ngIf="otkaziGreska!=''">
+        <h3 class="error">{{otkaziGreska}}</h3><br>
+    </span>
+</div>
+<br>
+<div class="rounded" style="border:1px dashed rgb(100, 100, 100);padding: 5px;">
+    <h2 class="mycolor2 myfont1">Istekle rezervacije</h2>
+    <h3 class="warning" *ngIf="istekleRezervacije.length==0">Nema rezervacija</h3>
+    <div class="container table-responsive no_padding" *ngIf="istekleRezervacije.length>0"
+        style="max-height: 33vh;overflow-y: auto;border:1px solid black;display: block;">
+        <table class="with_borders table no_margin">
+            <tr>
+                <th>&nbsp;Termin rezervacije&nbsp;</th>
+                <th>&nbsp;Naziv restorana&nbsp;</th>
+                <th>&nbsp;Adresa restorana&nbsp;</th>
+            </tr>
+
+            <tr *ngFor=" let r of istekleRezervacije">
+                <td>&nbsp;{{odrediDatum(r.dan_posete,r.pocetak)}}
+                    <span *ngIf="r.status=='posecena' || r.status=='produzena'" style="display: inline-block;">
+                        &nbsp;
+                        <button *ngIf="izabranaRezervacija.id!=r.id" class="btn mybutton1"
+                            (click)="otvoriFormu(r)">Ocenite</button>
+                        <span *ngIf="izabranaRezervacija.id==r.id" class="warning">(popunite formu ispod)</span>
+                    </span>
+                    &nbsp;
+                </td>
+                <td>&nbsp;{{r.naziv_restorana}}&nbsp;</td>
+                <td>&nbsp;{{r.adresa_restorana}}&nbsp;</td>
+            </tr>
+        </table>
+    </div>
+    <br>
+    <div *ngIf="otvorenaForma">
+        <h2 class="mycolor2 myfont1">Ocenite rezervaciju "{{izabranaRezervacija.naziv_restorana}}:
+            {{odrediDatum(izabranaRezervacija.dan_posete,izabranaRezervacija.pocetak)}}"</h2>
+        <div class="form-floating">
+            <input type="text" class="form-control" placeholder="" id="input_komentar" name="input_komentar"
+                [(ngModel)]="komentar">
+            <label for="input_komentar">Komentar</label>
+        </div>
+        <img *ngFor="let i of range(0,5)" (click)="oceni(i+1)"
+            [src]="'../../../../assets/images/zvezda'+slike[i]+'_40.jpg'">
+        <br>
+        <button class="btn mybutton4" (click)="posaljiOcenu()">Posaljite ocenu</button>
+        <button class="btn mybutton3" (click)="zatvoriFormu()">Otkazi</button>
+        <br>
+        <span *ngIf="formaGreska.length>0">
+            <br>
+            <h3 class="error">{{formaGreska}}</h3>
+            <br>
+        </span>
+    </div>
+</div>
+<br>
+
+<div class="rounded" style="border:1px dashed rgb(100, 100, 100);padding: 5px;">
+    <h2 class="mycolor2 myfont1">Rezervacije na cekanju</h2>
+    <h3 class="warning" *ngIf="neobradjeneRezervacije.length==0">Nema rezervacija</h3>
+    <div class="container table-responsive no_padding" *ngIf="neobradjeneRezervacije.length>0"
+        style="max-height: 33vh;overflow-y: auto;border:1px solid black;">
+        <table class="with_borders table no_margin">
+            <tr>
+                <th>&nbsp;Termin rezervacije&nbsp;</th>
+                <th>&nbsp;Naziv restorana&nbsp;</th>
+                <th>&nbsp;Adresa restorana&nbsp;</th>
+            </tr>
+
+            <tr *ngFor=" let r of neobradjeneRezervacije">
+                <td>&nbsp;{{odrediDatum(r.dan_posete,r.pocetak)}}&nbsp;</td>
+                <td>&nbsp;{{r.naziv_restorana}}&nbsp;</td>
+                <td>&nbsp;{{r.adresa_restorana}}&nbsp;</td>
+            </tr>
+        </table>
+    </div>
+    <br>
+</div>
+<br>
+<div class="rounded" style="border:1px dashed rgb(100, 100, 100);padding: 5px;">
+    <h2 class="mycolor2 myfont1">Neuspesne rezervacije</h2>
+    <h3 class="warning" *ngIf="neuspesneRezervacije.length==0">Nema rezervacija</h3>
+    <div class="container table-responsive no_padding" *ngIf="neuspesneRezervacije.length>0"
+        style="max-height: 33vh;overflow-y: auto;border:1px solid black;min-width:100%;">
+        <table class="with_borders table no_margin with_padding">
+            <tr>
+                <th>&nbsp;Termin rezervacije&nbsp;</th>
+                <th>&nbsp;Naziv restorana&nbsp;</th>
+                <th>&nbsp;Adresa restorana&nbsp;</th>
+                <th>&nbsp;Status&nbsp;</th>
+            </tr>
+
+            <tr *ngFor=" let r of neuspesneRezervacije">
+                <td>&nbsp;{{odrediDatum(r.dan_posete,r.pocetak)}}&nbsp;</td>
+                <td>&nbsp;{{r.naziv_restorana}}&nbsp;</td>
+                <td>&nbsp;{{r.adresa_restorana}}&nbsp;</td>
+                <td>&nbsp;{{r.status}}{{r.status=='odbijena'?(" ("+r.komentar+")"):""}}&nbsp;</td>
+            </tr>
+        </table>
+    </div>
+    <br>
+</div>

@@ -1,0 +1,22 @@
+[{
+  "_id": {
+    "$oid": "66718d71f1acf31145deb5f3"
+  },
+  "gost": "mirko",
+  "restoran": 1,
+  "jelo": 9,
+  "naziv": "curosi",
+  "cena": 1500,
+  "kolicina": 0.2
+},
+{
+  "_id": {
+    "$oid": "66718d7cf1acf31145deb61e"
+  },
+  "gost": "mirko",
+  "restoran": 1,
+  "jelo": 7,
+  "naziv": "nacosi",
+  "cena": 2000,
+  "kolicina": 0.3
+}]

@@ -1,0 +1,53 @@
+<div class="rounded" style="border:1px dashed rgb(100, 100, 100);padding: 4px;">
+    <h2 class="mycolor2 myfont1">Radno vreme restorana</h2>
+    <div class="table-responsive no_padding" id="radno_vreme">
+        <table class="with_borders table no_margin" style="max-width: fit-content;">
+            <tr>
+                <th rowspan="2" colspan="2">&nbsp;Dan&nbsp;</th>
+                <th rowspan="2" *ngIf="najduziDan>0" style="white-space: nowrap;">
+                    &nbsp;Broj intervala&nbsp;
+                </th>
+                <th *ngIf="najduziDan>0" [attr.colspan]="najduziDan" style="white-space: nowrap;">
+                    &nbsp;Intervali&nbsp;
+                </th>
+            </tr>
+            <tr>
+                <th *ngFor="let i of range(0,najduziDan)">&nbsp;#{{i+1}}&nbsp;</th>
+            </tr>
+            <ng-container *ngFor="let i of range(0,7)">
+                <tr>
+                    <td rowspan="2" style="border-right: none;">
+                        &nbsp;{{dani[i]}}&nbsp;
+                    </td>
+                    <td rowspan="2" style="border-left: none;padding:2px;">
+                        <button type="button" class="btn mybutton4" *ngIf="izabrano[i]" (click)="azurirajIzabrano(i)"
+                            style="background-color: forestgreen">Otvoreno</button>
+                        <button class="btn mybutton3" *ngIf="!izabrano[i]" (click)="azurirajIzabrano(i)"
+                            style="background-color: crimson">Zatvoreno</button>
+                    </td>
+                    <td rowspan="2" *ngIf="najduziDan>0 && izabrano[i]">
+                        &nbsp;<select [(ngModel)]="brojTekst[i]" (change)="azurirajBrojIntervala(i)">
+                            <option *ngFor="let j of range(1,max+1)" [value]="j.toString()">
+                                {{j}}
+                            </option>
+                        </select>&nbsp;
+                    </td>
+                    <td rowspan="2" *ngIf="najduziDan>0 && !izabrano[i]">
+                        <select disabled>
+                            <option>0</option>
+                        </select>
+                    </td>
+                    <td *ngFor="let j of range(0,najduziDan)" style="white-space: nowrap;border-bottom: none;">
+                        <input *ngIf="brojIntervala[i]>j" type="time" [(ngModel)]="intervali[i][j][0]">
+
+                    </td>
+                </tr>
+                <tr>
+                    <td *ngFor="let j of range(0,najduziDan)" style="white-space: nowrap;border-top: none;">
+                        <input *ngIf="brojIntervala[i]>j" type="time" [(ngModel)]="intervali[i][j][1]">
+                    </td>
+                </tr>
+            </ng-container>
+        </table>
+    </div>
+</div>

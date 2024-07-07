@@ -1,0 +1,77 @@
+<h1 class="mycolor1 myfont1">Promena lozinke</h1>
+<form *ngIf="mod<=1">
+    <div class="form-floating">
+        <input type="text" class="form-control" placeholder=""
+        id="input_kor_ime" name="input_kor_ime" [(ngModel)]="kor_ime">
+        <label for="input_kor_ime">Korisnicko ime</label>
+    </div>
+    <br>
+    <div class="form-floating">
+        <input type="password" class="form-control" placeholder=""
+        id="input_stara" name="input_stara" [(ngModel)]="stara_lozinka">
+        <label for="input_stara">Stara lozinka</label>
+    </div>
+    <br>
+    <div class="form-floating">
+        <input type="password" class="form-control" placeholder=""
+        id="input_nova1" name="input_nova1" [(ngModel)]="nova_lozinka1">
+        <label for="input_nova1">Nova lozinka</label>
+    </div>
+    <br>
+    <div class="form-floating">
+        <input type="password" class="form-control" placeholder=""
+        id="input_nova2" name="input_nova2" [(ngModel)]="nova_lozinka2">
+        <label for="input_nova2">Ponovite novu lozinku</label>
+    </div>
+    <br>
+    <button class="btn mybutton1" (click)="promeniLozinku()">Promeni</button>&nbsp;
+    <button class="btn mybutton1" (click)="unaprediMod()">Zaboravljena lozinka?</button>
+</form>
+<div *ngIf="mod<=1">
+    <h3 *ngFor="let g of greskaPoruke" class="error">{{g}}</h3>
+</div>
+
+<form *ngIf="mod==2">
+    <div class="form-floating">
+        <input type="text" class="form-control" placeholder=""
+        id="input_kor_ime" name="input_kor_ime" [(ngModel)]="kor_ime">
+        <label for="input_kor_ime">Korisnicko ime</label>
+    </div>
+    <br>
+    <button class="btn mybutton1" (click)="dohvatiBezbPitanje()">Bezbedonosno pitanje</button>
+</form>
+<div *ngIf="mod==2">
+    <h3 *ngFor="let g of greskaPoruke" class="error">{{g}}</h3>
+</div>
+
+<form *ngIf="mod==3">
+    <div class="form-floating">
+        <input type="text" class="form-control" placeholder=""
+        id="input_odgovor" name="input_odgovor" [(ngModel)]="bezb_odgovor">
+        <label for="input_odgovor">{{bezb_pitanje}}</label>
+    </div>
+    <br>
+    <button class="btn mybutton1" (click)="proveriBezbOdgovor()">Proveri odgovor</button>
+</form>
+<div *ngIf="mod==3">
+    <h3 *ngFor="let g of greskaPoruke" class="error">{{g}}</h3>
+</div>
+
+<form *ngIf="mod==4">
+    <div class="form-floating">
+        <input type="password" class="form-control" placeholder=""
+        id="input_nova1" name="input_nova1" [(ngModel)]="nova_lozinka1">
+        <label for="input_nova1">Nova lozinka</label>
+    </div>
+    <br>
+    <div class="form-floating">
+        <input type="password" class="form-control" placeholder=""
+        id="input_nova2" name="input_nova2" [(ngModel)]="nova_lozinka2">
+        <label for="input_nova2">Ponovite novu lozinku</label>
+    </div>
+    <br>
+    <button class="btn mybutton1" (click)="promeniLozinkuProvereno()">Promeni</button>
+</form>
+<div *ngIf="mod==4">
+    <h3 *ngFor="let g of greskaPoruke" class="error">{{g}}</h3>
+</div>

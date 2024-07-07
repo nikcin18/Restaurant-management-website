@@ -1,0 +1,10 @@
+<div class="rounded" style="border:1px dashed rgb(100, 100, 100);padding: 3px;">
+    <h2 class="mycolor2 myfont1">Broj gostiju po danima</h2>
+    <h3 class="warning" *ngIf="greska">Greska pri dohvatanju podataka</h3>
+    <div *ngIf="!greska">
+        <ngx-charts-bar-horizontal [results]="podaci" [xAxisLabel]="'Broj gostiju'" [yAxisLabel]="'Dani u nedelji'"
+            [legend]="false" [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true" [yAxis]="true"
+            [gradient]="false" [noBarWhenZero]="false" [showDataLabel]="true" [customColors]="customColors">
+        </ngx-charts-bar-horizontal>
+    </div>
+</div>

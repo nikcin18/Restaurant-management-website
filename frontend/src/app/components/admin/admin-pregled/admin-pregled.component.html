@@ -1,0 +1,33 @@
+<h1 class="mycolor1 myfont1">Pregled podataka</h1>
+<div class="rounded" style="border:1px dashed rgb(100, 100, 100);padding: 3px;">
+<h3 class="mycolor2">Gosti u sistemu</h3>
+<ul class="list-group" style="max-height: 33vh;overflow-y: auto;">
+    <li class="list-group-item" *ngFor="let g of gosti">
+        <a routerLink="/admin/gost" [queryParams]="{kor_ime:g.kor_ime}">{{g.kor_ime}}</a>
+        &nbsp;
+        <img [src]="g.slika" *ngIf="g.slika.length>0" width="50" height="50">
+        <img src="../../../../assets/images/bez_slike.png" *ngIf="g.slika.length==0" width="50" height="50">
+    </li>
+</ul>
+</div>
+<br>
+<div class="rounded" style="border:1px dashed rgb(100, 100, 100);padding: 3px;">
+    <h3 class="mycolor2">Konobari u sistemu</h3>
+<ul class="list-group" style="max-height: 33vh;overflow-y: auto;">
+    <li class="list-group-item" *ngFor="let k of konobari">
+        <a routerLink="/admin/konobar" [queryParams]="{kor_ime:k.kor_ime}">{{k.kor_ime}}</a>
+        &nbsp;
+        <img [src]="k.slika" *ngIf="k.slika.length>0" width="50" height="50">
+        <img src="../../../../assets/images/bez_slike.png" *ngIf="k.slika.length==0" width="50" height="50">
+    </li>
+</ul>
+</div>
+<br>
+<div class="rounded" style="border:1px dashed rgb(100, 100, 100);padding: 3px;">
+    <h3 class="mycolor2">Restorani u sistemu</h3>
+<ul class="list-group" style="max-height: 33vh;overflow-y: auto;">
+    <li class="list-group-item" *ngFor="let r of restorani">
+        {{r.naziv}}
+    </li>
+</ul>
+</div>

@@ -1,0 +1,85 @@
+<h1 class="mycolor1 myfont1">Pocetna strana</h1>
+<div class="rounded" style="border:1px dashed rgb(100, 100, 100);padding: 3px;">
+    <h2 class="mycolor2 myfont1">Statistika sistema</h2>
+    <div class="mycolor6" style="padding: 5px;">
+        <p>Broj rezervacija u poslednjih 24 sata: {{rezervacije[0]}}</p>
+        <p>Broj rezervacija u poslednjih 7 dana: {{rezervacije[1]}}</p>
+        <p>Broj rezervacija u poslednjih mesec dana: {{rezervacije[2]}}</p>
+        <p>Ukupan broj restorana: {{restorani.length}}</p>
+        <p>Ukupan broj registrovanih gostiju: {{brojGostiju}}</p>
+    </div>
+</div>
+
+<br>
+<div class="rounded" style="border:1px dashed rgb(100, 100, 100);padding: 3px;">
+    <h2 class="mycolor2 myfont1">Pretraga restorana</h2>
+    <form>
+        <div class="form-floating">
+            <input type="text" class="form-control" placeholder="" id="input_naziv" name="input_naziv"
+                [(ngModel)]="pretragaNaziv">
+            <label for="input_naziv">Naziv</label>
+        </div>
+        <br>
+        <div class="form-floating">
+            <input type="text" class="form-control" placeholder="" id="input_tip" name="input_tip"
+                [(ngModel)]="pretragaTip">
+            <label for="input_tip">Tip</label>
+        </div>
+        <br>
+        <div class="form-floating">
+            <input type="text" class="form-control" placeholder="" id="input_adresa" name="input_adresa"
+                [(ngModel)]="pretragaAdresa">
+            <label for="input_adresa">Adresa</label>
+        </div>
+        <br>
+        <button type="submit" class="btn mybutton1" (click)="pretragaRestorana()">
+            Pretraga
+        </button>
+    </form>
+    <br>
+    <h3 class="warning" *ngIf="restorani.length==0">Nema restorana</h3>
+    <div class="container table-responsive no_padding" *ngIf="restorani.length>0"
+        style="max-height: 33vh;overflow-y: auto;border:1px solid black">
+        <table class="with_borders table with_padding no_margin">
+            <tr>
+                <th>
+                    &nbsp;
+                    <span style="vertical-align: middle;">Naziv</span>
+                    &nbsp;
+                    <button class="btn mybutton1" (click)="sortirajNazivR()">&uarr;</button>
+                    <button class="btn mybutton1" (click)="sortirajNazivO()">&darr;</button>
+                    &nbsp;
+                </th>
+                <th>
+                    &nbsp;
+                    <span style="vertical-align: middle;">Tip</span>
+                    &nbsp;
+                    <button class="btn mybutton1" (click)="sortirajTipR()">&uarr;</button>
+                    <button class="btn mybutton1" (click)="sortirajTipO()">&darr;</button>
+                    &nbsp;
+                </th>
+                <th>
+                    &nbsp;
+                    <span style="vertical-align: middle;">Adresa</span>
+                    &nbsp;
+                    <button class="btn mybutton1" (click)="sortirajAdresaR()">&uarr;</button>
+                    <button class="btn mybutton1" (click)="sortirajAdresaO()">&darr;</button>
+                    &nbsp;
+                </th>
+                <th>&nbsp;Kontakt&nbsp;</th>
+                <th>&nbsp;Zaposleni&nbsp;</th>
+            </tr>
+            <tr *ngFor="let r of restorani">
+                <td>&nbsp;{{r.naziv}}&nbsp;</td>
+                <td>&nbsp;{{r.tip}}&nbsp;</td>
+                <td>&nbsp;{{r.adresa}}&nbsp;</td>
+                <td>&nbsp;{{r.kontakt}}&nbsp;</td>
+                <td>
+                    <ng-container *ngFor="let z of r.zaposleni" style="display: inline-block;">
+                        &nbsp;{{z}}&nbsp;<br>
+                    </ng-container>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,59 @@
+<!-- TODO: bootstrap kolicine, greske u poljima za kolicine -->
+<h1 class="mycolor1 myfont1">Korpa za narucivanje</h1>
+<div *ngIf="korpa.length>0">
+    <div class="table-responsive with_borders" style="max-height: 50vh;overflow-y: auto;">
+        <table class="with_borders table with_padding no_margin">
+            <tr>
+                <th class="with_padding">&nbsp;Naziv&nbsp;</th>
+                <th class="with_padding">&nbsp;Cena (po kg/L)&nbsp;</th>
+                <th class="with_padding">&nbsp;Kolicina (u kg/L)&nbsp;</th>
+                <th class="with_padding">&nbsp;Promeni kolicinu&nbsp;</th>
+            </tr>
+            <tr *ngFor="let i of range(0,korpa.length)">
+                <td>&nbsp;{{korpa[i].naziv}}&nbsp;</td>
+                <td>&nbsp;{{korpa[i].cena}}&nbsp;</td>
+                <td>&nbsp;{{korpa[i].kolicina}}&nbsp;</td>
+                <td style="align-items: center;">
+                    <div class="input-group input-group-sm mb-3 no_margin"
+                        style=" vertical-align: middle;flex-wrap: nowrap;">
+                        <input type="text" class="form-control-sm" placeholder="Unesite kolicinu (u kg/L)"
+                            aria-label="Recipient's username" aria-describedby="basic-addon2"
+                            [id]="'input_kolicine'+i.toString()" [name]="'input_kolicine'+i.toString()"
+                            [(ngModel)]="kolicine[i]">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn mybutton1 rounded-right" (click)="promeniKolicinu(i)"
+                                style="max-height: fit-content;border-radius: 0;" [id]="'promeni'+i.toString()">
+                                Promeni kolicinu
+                            </button>
+                        </div>
+                        <div class="input-group-append">
+                            <button type="submit" class="btn mybutton1 rounded-right" (click)="ukloniJelo(i)"
+                                style="max-height: fit-content;border-top-left-radius: 0;border-bottom-left-radius: 0;"
+                                [id]="'ukloni'+i.toString()">
+                                Ukloni jelo
+                            </button>
+                        </div>
+                    </div>
+                    <span style="color:red;margin: 0;display: inline-block;"
+                        *ngIf="i<greske.length && greske[i].length>0">{{greske[i]}}</span>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <br>
+    <h3 class="mycolor2 myfont1">
+        Ukupna cena korpe: {{cena}}
+    </h3>
+</div>
+<br>
+<h3 class="message" *ngIf="poruka!=''">{{poruka}}</h3>
+
+<h3 class="warning" *ngIf="korpa.length==0">
+    Korpa je prazna. Vratite se na stranicu restorana i dodajte jela u korpu
+</h3>
+<h3 class="error" *ngIf="greska.length>0">{{greska}}</h3>
+<br>
+<button class="btn mybutton4" *ngIf="korpa.length>0" (click)="naruci()">Naruci</button>
+&nbsp;
+<button class="btn mybutton3" (click)="nazad()">Nazad</button>
+<br>

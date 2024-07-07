@@ -1,0 +1,157 @@
+<h1 class="mycolor1 myfont1">Rezervacije gostiju</h1>
+<div class="rounded" style="border:1px dashed rgb(100, 100, 100);padding: 3px;">
+    <h2 class="mycolor2 myfont1">Neobradjene rezervacije</h2>
+    <h3 class="warning" *ngIf="neobradjene.length==0">Nema rezervacija</h3>
+    <div class="table-responsive no_padding" *ngIf="neobradjene.length>0"
+        style="max-height: 33vh;overflow-y: auto;border:1px solid black">
+        <table class="with_borders table with_padding no_margin">
+            <tr>
+                <th>&nbsp;Gost&nbsp;</th>
+                <th>&nbsp;Termin&nbsp;</th>
+                <th>&nbsp;Sto&nbsp;</th>
+                <th>&nbsp;Broj ljudi&nbsp;</th>
+                <th>&nbsp;Dodatni zahtevi&nbsp;</th>
+                <th>&nbsp;Odluka&nbsp;</th>
+            </tr>
+            <ng-container *ngFor=" let r of neobradjene">
+                <tr>
+                    <td rowspan="2">&nbsp;{{r.ime_prezime}} ({{r.gost}})&nbsp;</td>
+                    <td rowspan="2">&nbsp;{{odrediDatum(r.dan_posete,r.pocetak)}}&nbsp;</td>
+                    <td rowspan="2">&nbsp;{{(r.sto>-1)?r.sto.toString():"-"}}&nbsp;</td>
+                    <td rowspan="2">&nbsp;{{r.broj_ljudi}}&nbsp;</td>
+                    <td rowspan="2">&nbsp;{{r.zahtevi}}&nbsp;</td>
+                    <td *ngIf="odbijanje.id!=r.id && prihvatanje.id!=r.id">
+                        <button class="btn mybutton4 with_margin" (click)="pokreniPrihvati(r)">Prihvati
+                            rezervaciju</button>
+                    </td>
+                    <td *ngIf="odbijanje.id==r.id">
+                        <textarea class="form-control" [(ngModel)]="komentar"
+                            placeholder="Komentar pri odbijanju"></textarea>
+                    </td>
+                    <td rowspan="2" *ngIf="prihvatanje.id==r.id">
+                        <span class="warning no_padding">&nbsp;Pogledajte formu ispod tabele&nbsp;</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td *ngIf="odbijanje.id!=r.id && prihvatanje.id!=r.id">
+                        <button class="btn mybutton3 with_margin" (click)="pokreniOdbij(r)">Odbij rezervaciju</button>
+                    </td>
+                    <td *ngIf="odbijanje.id==r.id">
+                        <button type="button" class="btn mybutton4" (click)="zavrsiOdbij()"
+                            style="max-height: fit-content;background-color: forestgreen" id="zavrsi">Potvrdi</button>
+                        <button type="button" class="btn mybutton3" (click)="odustaniOdbij()"
+                            style="max-height: fit-content;background-color: crimson" id="odustani">Nazad</button>
+                    </td>
+                </tr>
+            </ng-container>
+        </table>
+    </div>
+    <div id="div_canvas">
+        <br>
+        <h2 class="mycolor2">Forma za biranje stola</h2>
+        <select *ngIf="prekoForme" id="select_stolovi" class="form-select" (change)="izaberi()"
+            [(ngModel)]="izabranSto">
+            <option [value]="-1" [id]="-1">Izaberite sto</option>
+            <option *ngFor="let i of range(0,slobodniStolovi.length)" [id]="i" [value]="i"
+                [hidden]="slobodniStolovi[i].kap==-1">
+                Sto #{{i}} (kapacitet {{restoran.raspored.stolovi[i].kap}})
+            </option>
+        </select>
+        <div class="overflow-auto">
+            <br>
+            <canvas id="canvas_konobar" width="500" height="345" style="border:1px black solid">
+            </canvas>
+        </div>
+        <br>
+        <button type="button" class="btn mybutton4" (click)="zavrsiPrihvati()"
+            *ngIf="prekoForme || (!prekoForme && izabranSto>-1 && slobodniStolovi[izabranSto].kap>-1)"
+            style="max-height: fit-content;background-color: forestgreen" id="zavrsi">Potvrdi</button>
+        <button type="button" class="btn mybutton3" (click)="odustaniPrihvati()"
+            style="max-height: fit-content;background-color: crimson" id="odustani">Nazad</button>
+        <br>
+        <h3 class="error" *ngIf="greska.length>=0">{{greska}}</h3>
+    </div>
+</div>
+<br>
+
+<div class="rounded" style="border:1px dashed rgb(100, 100, 100);padding: 3px;">
+    <h2 class="mycolor2 myfont1">Prihvacene rezervacije (ceka se gost)</h2>
+    <h3 class="warning" *ngIf="prihvacene.length==0">Nema rezervacija</h3>
+    <div class="container table-responsive no_padding" *ngIf="prihvacene.length>0"
+        style="max-height: 33vh;overflow-y: auto;border:1px solid black">
+        <table class="with_borders table table-sm no_margin" style="width: 100%;">
+            <tr>
+                <th>&nbsp;Gost&nbsp;</th>
+                <th>&nbsp;Termin&nbsp;</th>
+                <th>&nbsp;Sto&nbsp;</th>
+                <th>&nbsp;Broj ljudi&nbsp;</th>
+                <th>&nbsp;Dodatni zahtevi&nbsp;</th>
+                <th colspan="2">&nbsp;Potvrdi dolazak&nbsp;</th>
+            </tr>
+            <ng-container *ngFor=" let r of prihvacene">
+                <tr *ngIf="r.status=='u toku'">
+                    <td>&nbsp;{{r.ime_prezime}} ({{r.gost}})&nbsp;</td>
+                    <td>&nbsp;{{odrediDatum(r.dan_posete,r.pocetak)}}&nbsp;</td>
+                    <td>&nbsp;{{r.sto}}&nbsp;</td>
+                    <td>&nbsp;{{r.broj_ljudi}}&nbsp;</td>
+                    <td>&nbsp;{{r.zahtevi}}&nbsp;</td>
+                    <td *ngIf="mozePotvrditi(r)">
+                        &nbsp;
+                        <button class="btn mybutton4" (click)="posecenaRezervacija(r.id)">Gost je dosao</button>
+                        &nbsp;
+                        <button class="btn mybutton3" (click)="propustenaRezervacija(r.id)">Gost nije dosao</button>
+                        &nbsp;
+                    </td>
+                    <td *ngIf="!mozePotvrditi(r)">
+                        &nbsp;Ne moze se potvrditi dolazak&nbsp;
+                    </td>
+                </tr>
+            </ng-container>
+        </table>
+    </div>
+</div>
+<br>
+<div class="rounded" style="border:1px dashed rgb(100, 100, 100);padding: 3px;">
+    <h2 class="mycolor2 myfont1">Prihvacene rezervacije (utvrdjen dolazak)</h2>
+    <h3 class="warning" *ngIf="potvrdjene.length==0">Nema rezervacija</h3>
+    <div class="container table-responsive no_padding" *ngIf="potvrdjene.length>0"
+        style="max-height: 33vh;overflow-y: auto;border:1px solid black">
+        <table class="with_borders table no_margin">
+            <tr>
+                <th>&nbsp;Gost&nbsp;</th>
+                <th>&nbsp;Pocetak&nbsp;</th>
+                <th>&nbsp;Kraj&nbsp;</th>
+                <th>&nbsp;Sto&nbsp;</th>
+                <th>&nbsp;Broj ljudi&nbsp;</th>
+                <th>&nbsp;Dodatni zahtevi&nbsp;</th>
+                <th>&nbsp;Status&nbsp;</th>
+            </tr>
+            <ng-container *ngFor=" let r of potvrdjene">
+                <tr *ngIf="r.status!='u toku'">
+                    <td>&nbsp;{{r.ime_prezime}} ({{r.gost}})&nbsp;</td>
+                    <td>&nbsp;{{odrediDatum(r.dan_posete,r.pocetak)}}&nbsp;</td>
+                    <td *ngIf="r.kraj<r.pocetak || r.kraj==1440">&nbsp;{{odrediDatum(r.dan_posete+1
+                        ,r.kraj%1440)}}&nbsp;
+                    </td>
+                    <td *ngIf="r.kraj>=r.pocetak && r.kraj<1440">&nbsp;{{odrediDatum(r.dan_posete,r.kraj)}}&nbsp;</td>
+                    <td>&nbsp;{{r.sto}}&nbsp;</td>
+                    <td>&nbsp;{{r.broj_ljudi}}&nbsp;</td>
+                    <td>&nbsp;{{r.zahtevi}}&nbsp;</td>
+                    <td class="with_padding">
+                        &nbsp;{{r.status}}&nbsp;
+                        <span style="display: inline-block;" class=" no_margin"
+                            *ngIf=" r.status=='posecena' || r.status=='posecena ocenjena'">
+                            <button class=" btn mybutton1" (click)="produziRezervaciju(r.id)">Produzi
+                                rezervaciju</button>
+                        </span>
+                    </td>
+                </tr>
+            </ng-container>
+        </table>
+    </div>
+    <div *ngIf="produziGreska.length>0">
+        <br>
+        <h3 class="error" *ngIf="produziGreska.length>0">{{produziGreska}}</h3>
+    </div>
+</div>
+<br>

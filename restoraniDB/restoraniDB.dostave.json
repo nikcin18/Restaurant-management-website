@@ -1,0 +1,90 @@
+[{
+  "_id": {
+    "$oid": "66718d65f1acf31145deb5dc"
+  },
+  "id": 7,
+  "gost": "mirko",
+  "naziv_restorana": "Zapata (Vukov spomenik)",
+  "restoran": 1,
+  "ime_prezime": "Mirko Mirkovic",
+  "adresa_gosta": "Stevice Jovanovica 30, Pancevo",
+  "datum": {
+    "$numberLong": "1718717797901"
+  },
+  "sadrzaj": [
+    "prazna tortilja (1 kg/L)",
+    "domace pivo (0.3 kg/L)"
+  ],
+  "racun": 1160,
+  "status": "prihvacena",
+  "procenjeno_vreme": {
+    "$numberLong": "1718721854769"
+  }
+},
+{
+  "_id": {
+    "$oid": "66718f17f1acf31145deb8a3"
+  },
+  "id": 8,
+  "gost": "mare",
+  "naziv_restorana": "Zapata (Vukov spomenik)",
+  "restoran": 1,
+  "ime_prezime": "Marko Markovic",
+  "adresa_gosta": "Bulevar kralja Aleksandra 70 Beograd",
+  "datum": {
+    "$numberLong": "1718718231772"
+  },
+  "sadrzaj": [
+    "domace pivo (0.5 kg/L)",
+    "nacosi (0.6 kg/L)",
+    "curosi (0.4 kg/L)"
+  ],
+  "racun": 2400,
+  "status": "prihvacena",
+  "procenjeno_vreme": {
+    "$numberLong": "1718720660614"
+  }
+},
+{
+  "_id": {
+    "$oid": "66718f4ef1acf31145deb914"
+  },
+  "id": 9,
+  "gost": "mare",
+  "naziv_restorana": "Zapata (Vukov spomenik)",
+  "restoran": 1,
+  "ime_prezime": "Marko Markovic",
+  "adresa_gosta": "Bulevar kralja Aleksandra 70 Beograd",
+  "datum": {
+    "$numberLong": "1718718286459"
+  },
+  "sadrzaj": [
+    "prazna tortilja (0.4 kg/L)",
+    "domace pivo (0.5 kg/L)"
+  ],
+  "racun": 920,
+  "status": "neobradjena",
+  "procenjeno_vreme": 0
+},
+{
+  "_id": {
+    "$oid": "66718f5cf1acf31145deb95e"
+  },
+  "id": 10,
+  "gost": "mare",
+  "naziv_restorana": "Zapata (Vukov spomenik)",
+  "restoran": 1,
+  "ime_prezime": "Marko Markovic",
+  "adresa_gosta": "Bulevar kralja Aleksandra 70 Beograd",
+  "datum": {
+    "$numberLong": "1718718300690"
+  },
+  "sadrzaj": [
+    "domace pivo (0.7 kg/L)",
+    "nacosi (0.9 kg/L)",
+    "curosi (0.4 kg/L)"
+  ],
+  "racun": 3240,
+  "status": "neobradjena",
+  "procenjeno_vreme": 0
+}]

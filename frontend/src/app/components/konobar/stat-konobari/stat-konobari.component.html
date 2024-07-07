@@ -1,0 +1,10 @@
+<div class="rounded" style="border:1px dashed rgb(100, 100, 100);padding: 3px;">
+    <h2 class="mycolor2 myfont1">Raspored gostiju po konobarima</h2>
+    <h3 class="warning" *ngIf="greska">Greska pri dohvatanju podataka</h3>
+    <div *ngIf="!greska">
+        <h3 class="warning" *ngIf="prazno">Nema konobara</h3>
+        <ngx-charts-pie-chart *ngIf="!greska && !prazno" [results]="podaci" [legend]="false" [labels]="true"
+            [labelFormatting]="formirajOznaku" [doughnut]="false">
+        </ngx-charts-pie-chart>
+    </div>
+</div>

@@ -1,0 +1,122 @@
+<h1 class="mycolor1 myfont1">Profil konobara</h1>
+
+<h3 *ngIf="promeniDugme[0]">
+    <span style="vertical-align: middle;" class="mycolor2">Profilna slika: </span>
+    <img *ngIf="konobar.slika.length>0" [src]="konobar.slika" style="border: 1px solid black;" height="50" width="auto">
+    <img *ngIf="konobar.slika.length==0" src="../../../../assets/images/bez_slike.png" style="border: 1px solid black;"
+        height="50" width="auto">
+    &nbsp;
+    <button class="btn mybutton2" (click)="pokreniAzuriranje(0)" *ngIf="promeniDugme[0]">
+        Promeni
+    </button>
+</h3>
+<div *ngIf="!promeniDugme[0]">
+    <div class="input-group mb-3">
+        <button class="btn mybutton1" (click)="fileInput.click()" id="ucitaj">Ucitaj</button>
+        <button class="btn mybutton1" (click)="izbrisiSliku()" id="resetuj">Izbrisi</button>
+        <img class="img-fluid" [src]="novaSlika" *ngIf="novaSlika.length>0"
+            style="height: 50px;width: auto;border: 1px solid black;">
+        <img class="img-fluid" src="../../../../assets/images/bez_slike.png" *ngIf="novaSlika.length==0"
+            style="height: 50px;width: auto;border: 1px solid black;">
+        <button class="btn mybutton1" (click)="potvrdiAzuriranje(0)">Potvrdi</button>
+        <button class="btn mybutton1 rounded-end" (click)="otkaziAzuriranje(0)">Otkaži</button>
+        <input type="file" accept="image/png, image/jpg, image/jpeg" (change)="ucitajSliku($event)" #fileInput hidden>
+    </div>
+    <span class="error" *ngIf="greska.length>0">{{greska}}</span>
+</div>
+<br>
+<h3 *ngIf="promeniDugme[1]">
+    <span style="vertical-align: middle;"><span class="mycolor2">Ime: </span>{{konobar.ime}}&nbsp;</span>
+    <button class="btn mybutton2" (click)="pokreniAzuriranje(1)">
+        Promeni
+    </button>
+</h3>
+<div *ngIf="!promeniDugme[1]">
+    <div class="input-group mb-3">
+        <div class="form-floating">
+            <input type="text" class="form-control" placeholder="" id="input_novo" name="input_novo"
+                [(ngModel)]="novaVrednost">
+            <label for="input_novo">Ime</label>
+        </div>
+        <button type="button" class="btn mybutton1" (click)="potvrdiAzuriranje(1)">Potvrdi</button>
+        <button type="button" class="btn mybutton1" (click)="otkaziAzuriranje(1)">Otkazi</button>
+    </div>
+    <span class="error" *ngIf="greska.length>0">{{greska}}</span>
+</div>
+<br>
+<h3 *ngIf="promeniDugme[2]">
+    <span style="vertical-align: middle;"><span class="mycolor2">Prezime: </span>{{konobar.prezime}}&nbsp;</span>
+    <button class="btn mybutton2" (click)="pokreniAzuriranje(2)">
+        Promeni
+    </button>
+</h3>
+<div *ngIf="!promeniDugme[2]">
+    <div class="input-group mb-3">
+        <div class="form-floating">
+            <input type="text" class="form-control" placeholder="" id="input_novo" name="input_novo"
+                [(ngModel)]="novaVrednost">
+            <label for="input_novo">Prezime</label>
+        </div>
+        <button type="button" class="btn mybutton1" (click)="potvrdiAzuriranje(2)">Potvrdi</button>
+        <button type="button" class="btn mybutton1" (click)="otkaziAzuriranje(2)">Otkazi</button>
+    </div>
+    <span class="error" *ngIf="greska.length>0">{{greska}}</span>
+</div>
+<br>
+<h3 *ngIf="promeniDugme[3]">
+    <span style="vertical-align: middle;"><span class="mycolor2">Adresa: </span>{{konobar.adresa}}&nbsp;</span>
+    <button class="btn mybutton2" (click)="pokreniAzuriranje(3)">
+        Promeni
+    </button>
+</h3>
+<div *ngIf="!promeniDugme[3]">
+    <div class="input-group mb-3">
+        <div class="form-floating">
+            <input type="text" class="form-control" placeholder="" id="input_novo" name="input_novo"
+                [(ngModel)]="novaVrednost">
+            <label for="input_novo">Adresa</label>
+        </div>
+        <button type="button" class="btn mybutton1" (click)="potvrdiAzuriranje(3)">Potvrdi</button>
+        <button type="button" class="btn mybutton1" (click)="otkaziAzuriranje(3)">Otkazi</button>
+    </div>
+    <span class="error" *ngIf="greska.length>0">{{greska}}</span>
+</div>
+<br>
+<h3 *ngIf="promeniDugme[4]">
+    <span style="vertical-align: middle;"><span class="mycolor2">Imejl adresa: </span>{{konobar.imejl}}&nbsp;</span>
+    <button class="btn mybutton2" (click)="pokreniAzuriranje(4)">
+        Promeni
+    </button>
+</h3>
+<div *ngIf="!promeniDugme[4]">
+    <div class="input-group mb-3">
+        <div class="form-floating">
+            <input type="text" class="form-control" placeholder="" id="input_novo" name="input_novo"
+                [(ngModel)]="novaVrednost">
+            <label for="input_novo">Imejl adresa</label>
+        </div>
+        <button type="button" class="btn mybutton1" (click)="promeniImejl()">Potvrdi</button>
+        <button type="button" class="btn mybutton1" (click)="otkaziAzuriranje(4)">Otkazi</button>
+    </div>
+    <span class="error" *ngIf="greska.length>0">{{greska}}</span>
+</div>
+<br>
+<h3 *ngIf="promeniDugme[5]">
+    <span style="vertical-align: middle;"><span class="mycolor2">Kontakt telefon:
+        </span>{{konobar.telefon}}&nbsp;</span>
+    <button class="btn mybutton2" (click)="pokreniAzuriranje(5)">
+        Promeni
+    </button>
+</h3>
+<div *ngIf="!promeniDugme[5]">
+    <div class="input-group mb-3">
+        <div class="form-floating">
+            <input type="text" class="form-control" placeholder="" id="input_novo" name="input_novo"
+                [(ngModel)]="novaVrednost">
+            <label for="input_novo">Kontakt telefon</label>
+        </div>
+        <button type="button" class="btn mybutton1" (click)="potvrdiAzuriranje(5)">Potvrdi</button>
+        <button type="button" class="btn mybutton1" (click)="otkaziAzuriranje(5)">Otkazi</button>
+    </div>
+    <span class="error" *ngIf="greska.length>0">{{greska}}</span>
+</div>

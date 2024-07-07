@@ -1,0 +1,86 @@
+<h1 class="mycolor1 myfont1">Registracija korisnika</h1>
+<form>
+    <div class="form-floating">
+        <input type="text" class="form-control" placeholder="" id="input_kor_ime" name="input_kor_ime"
+            [(ngModel)]="kor_ime">
+        <label for="input_kor_ime">Korisnicko ime</label>
+    </div>
+    <br>
+    <div class="form-floating">
+        <input type="password" class="form-control" placeholder="" id="input_lozinka" name="input_lozinka"
+            [(ngModel)]="lozinka">
+        <label for="input_lozinka">Lozinka</label>
+    </div>
+    <br>
+    <div class="form-floating">
+        <input type="text" class="form-control" placeholder="" id="input_bezb_pitanje" name="input_bezb_pitanje"
+            [(ngModel)]="bezb_pitanje">
+        <label for="input_bezb_pitanje">Bezbedonosno pitanje</label>
+    </div>
+    <br>
+    <div class="form-floating">
+        <input type="text" class="form-control" placeholder="" id="input_bezb_odgovor" name="input_bezb_odgovor"
+            [(ngModel)]="bezb_odgovor">
+        <label for="input_bezb_odgovor">Odgovor</label>
+    </div>
+    <br>
+    <div class="form-floating">
+        <input type="text" class="form-control" placeholder="" id="input_ime" name="input_ime" [(ngModel)]="ime">
+        <label for="input_ime">Ime</label>
+    </div>
+    <br>
+    <div class="form-floating">
+        <input type="text" class="form-control" placeholder="" id="input_prezime" name="input_prezime"
+            [(ngModel)]="prezime">
+        <label for="input_prezime">Prezime</label>
+    </div>
+    <br>
+    <div class="form-control">
+        <label>Pol:</label>
+        &nbsp;
+        <label for="pol_m">M</label>
+        <input type="radio" name="pol" id="pol_m" value="M" [(ngModel)]="pol">
+        &nbsp;
+        <label for="pol_z">Z</label>
+        <input type="radio" name="pol" id="pol_z" value="Z" [(ngModel)]="pol">
+    </div>
+    <br>
+    <div class="form-floating">
+        <input type="text" class="form-control" placeholder="" id="input_adresa" name="input_adresa"
+            [(ngModel)]="adresa">
+        <label for="input_adresa">Adresa</label>
+    </div>
+    <br>
+    <div class="form-floating">
+        <input type="text" class="form-control" placeholder="" id="input_telefon" name="input_telefon"
+            [(ngModel)]="telefon">
+        <label for="input_telefon">Kontakt telefon</label>
+    </div>
+    <br>
+    <div class="form-floating">
+        <input type="text" class="form-control" placeholder="" id="input_imejl" name="input_imejl" [(ngModel)]="imejl">
+        <label for="input_imejl">I-mejl adresa</label>
+    </div>
+    <br>
+    <div class="form-floating">
+        <input type="text" class="form-control" placeholder="" id="input_kartica" name="input_kartica"
+            [(ngModel)]="kartica">
+        <label for="input_kartica">Broj kreditne kartice</label>
+    </div>
+    <br>
+    <div class="input-group mb-3">
+        <div class="form-floating">
+            <input type="text" class="form-control" placeholder="" id="input_slika" name="input_slika"
+                [(ngModel)]="slikaNaziv" readonly>
+            <label for="input_slika">Profilna slika</label>
+        </div>
+        <button type="button" class="btn mybutton1" (click)="fileInput.click()" id="ucitaj">Ucitaj sliku</button>
+        <button type="button" class="btn mybutton1" (click)="resetujSliku()" id="resetuj">Izbrisi sliku</button>
+    </div>
+    <button type="submit" class="btn mybutton1" (click)="posaljiZahtev()">
+        Potvrdi
+    </button>
+</form>
+<br>
+<h3 *ngFor="let gp of greskaPoruke" class="error myfont1">{{gp}}</h3>
+<input type="file" accept="image/png, image/jpg, image/jpeg" (change)="ucitajSliku($event)" #fileInput hidden>

@@ -1,0 +1,188 @@
+/* You can add global styles to this file, and also import other style files */
+
+.no_padding{
+    padding: 0px !important;
+}
+
+.with_padding{
+    padding: 3x !important;
+}
+
+.no_margin{
+    margin: 0px !important;
+}
+
+.with_margin{
+    margin: 5px !important;
+}
+
+.error{
+    color:red !important;
+    font-weight: bold;
+}
+
+.warning{
+    color:orange !important;
+    font-weight: bold;
+}
+
+.message{
+    color:green !important;
+    font-weight: bold;
+}
+
+.with_borders{
+    border: 1px solid black;
+    border-collapse: collapse;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.table-responsive{
+    min-width: 100%
+}
+
+#radno_vreme{
+    min-width: none !important
+}
+
+tr,th,td{
+    padding:inherit;
+    border:inherit;
+    white-space: nowrap;
+}
+
+:root{
+    --mycolor1:#95340a;
+    --mycolor2:#dc8855;
+    --mycolor3:#e5d5bd;
+    --mycolor4:#bcbc8f;
+    --mycolor5:#6b8e40;
+    --mycolor6:#478001;
+}
+
+.mybgcolor1{
+    background-color: var(--mycolor1) !important;
+}
+
+.mybgcolor2{
+    background-color: var(--mycolor2) !important;
+}
+
+.mybgcolor3{
+    background-color: var(--mycolor3) !important;
+}
+
+.mybgcolor4{
+    background-color:var(--mycolor4) !important;
+}
+
+.mybgcolor5{
+    background-color:var(--mycolor5) !important;
+}
+
+.mybgcolor6{
+    background-color:var(--mycolor6) !important;
+}
+
+.mycolor1{
+    color: var(--mycolor1) !important;
+}
+
+.mycolor2{
+    color: var(--mycolor2) !important;
+}
+
+.mycolor3{
+    color: var(--mycolor3) !important;
+}
+
+.mycolor4{
+    color:var(--mycolor4) !important;
+}
+
+.mycolor5{
+    color:var(--mycolor5) !important;
+}
+
+.mycolor6{
+    color:var(--mycolor6) !important;
+}
+
+.mylink5:any-link{
+    color:var(--mycolor5) !important;
+    text-decoration: none;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+.mybutton1{
+    background-color: var(--mycolor3) !important;
+    border: 1px solid black;
+}
+
+.mybutton1:hover, .mybutton1:focus-visible{
+    background-color: var(--mycolor2) !important;
+    border: 1px solid black;
+}
+
+.mybutton2{
+    background-color: var(--mycolor3) !important;
+    border: 1px solid black;
+    opacity: 0.2;
+}
+
+.mybutton2:hover, .mybutton2:focus-visible{
+    background-color: var(--mycolor2) !important;
+    border: 1px solid black;
+    opacity: 1;
+}
+
+.mybutton3{
+    background-color: crimson !important;
+    border: 1px solid black;
+    opacity: 0.8;
+}
+
+.mybutton3:hover, .mybutton3:focus-visible{
+    background-color: crimson !important;
+    border: 1px solid black;
+    opacity: 1;
+}
+
+.mybutton4{
+    background-color: forestgreen !important;
+    border: 1px solid black;
+    opacity: 0.8;
+}
+
+.mybutton4:hover, .mybutton4:focus-visible{
+    background-color: forestgreen !important;
+    border: 1px solid black;
+    opacity: 1;
+}
+
+.mybutton5{
+    background-color: midnightblue;
+    color:silver;
+    border: 1px solid black;
+    opacity: 0.8;
+}
+
+.mybutton5:hover, .mybutton5:focus-visible{
+    background-color: midnightblue;
+    color:silver;
+    border: 1px solid black;
+    opacity: 1;
+}
+
+.myfont1{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.myfont2{
+    font-family: Georgia, 'Times New Roman', Times, serif;font-style: italic;
+}

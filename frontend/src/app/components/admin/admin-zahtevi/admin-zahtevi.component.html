@@ -1,0 +1,41 @@
+<h1 class="mycolor1">Zahtevi za registracijom</h1>
+<div class="container table-responsive no_padding" *ngIf="zahtevi.length>0"
+    style="max-height: 33vh;overflow-y: auto;border:1px solid black;">
+    <table class="with_borders" style="min-width: 100%;">
+        <tr>
+            <!--<th>&nbsp;ID&nbsp;</th>-->
+            <th>&nbsp;Korisnicko ime&nbsp;</th>
+            <th>&nbsp;Ime&nbsp;</th>
+            <th>&nbsp;Prezime&nbsp;</th>
+            <th>&nbsp;Pol&nbsp;</th>
+            <th>&nbsp;Adresa&nbsp;</th>
+            <th>&nbsp;Telefon&nbsp;</th>
+            <th>&nbsp;Imejl&nbsp;</th>
+            <th>&nbsp;Slika&nbsp;</th>
+            <th>&nbsp;Status&nbsp;</th>
+        </tr>
+        <tr *ngFor="let z of zahtevi">
+            <!--<td>&nbsp;{{z.id}}&nbsp;</td>-->
+            <td>&nbsp;{{z.kor_ime}}&nbsp;</td>
+            <td>&nbsp;{{z.ime}}&nbsp;</td>
+            <td>&nbsp;{{z.prezime}}&nbsp;</td>
+            <td>&nbsp;{{z.pol}}&nbsp;</td>
+            <td>&nbsp;{{z.adresa}}&nbsp;</td>
+            <td>&nbsp;{{z.telefon}}&nbsp;</td>
+            <td>&nbsp;{{z.imejl}}&nbsp;</td>
+            <td>
+                <img *ngIf="z.slika.length>0" [src]="z.slika" style="max-height: 40px;width: auto;">
+                <img *ngIf="z.slika.length==0" src="../../../../assets/images/bez_slike.png" style="max-height: 40px;width: auto;">
+            </td>
+            <td>
+                &nbsp;{{z.status}}&nbsp;
+                <span *ngIf="z.status=='neobradjen'">
+                    <button class="btn mybutton4" (click)="prihvatiZahtev(z.id)">Prihvati</button>
+                    &nbsp;
+                    <button class="btn mybutton3" (click)="odbijZahtev(z.id)">Odbij</button>
+                    &nbsp;
+                </span>
+            </td>
+        </tr>
+    </table>
+</div>

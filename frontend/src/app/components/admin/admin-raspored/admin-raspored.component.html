@@ -1,0 +1,56 @@
+<div class="rounded" style="border:1px dashed rgb(100, 100, 100);padding: 4px;">
+    <h2 class="mycolor2 myfont1">Raspored u restoranu</h2>
+    <div class="input-group mb-3">
+        <div class="form-floating">
+            <input type="text" class="form-control" placeholder="" id="input_slika" name="input_slika"
+                [(ngModel)]="rasporedNaziv" readonly>
+            <label for="input_slika">Ucitan fajl</label>
+        </div>
+        <button class="btn mybutton1" (click)="fileInput.click()" id="ucitaj">Ucitaj fajl</button>
+        <button class="btn mybutton1 rounded-end" (click)="resetujRaspored()" id="resetuj">Izbrisi fajl</button>
+        <input type="file" accept=".json, .txt" (change)="ucitajRaspored($event)" #fileInput hidden>
+    </div>
+    <div class="input-group mb-3">
+        <div class="form-floating">
+            <input type="text" class="form-control" placeholder="" id="input_visina" name="input_visina"
+                [(ngModel)]="novaVisina">
+            <label for="input_visina">Visina</label>
+        </div>
+        <button class="btn mybutton1" (click)="promeniVisinu()">Promeni</button>
+    </div>
+    <div class="input-group mb-3">
+        <div class="form-floating">
+            <input type="text" class="form-control" placeholder="" id="input_sirina" name="input_sirina"
+                [(ngModel)]="novaSirina">
+            <label for="input_sirina">Sirina</label>
+        </div>
+        <button class="btn mybutton1" (click)="promeniSirinu()">Promeni</button>
+    </div>
+    <div *ngIf="mod==1">
+        <button class="btn mybutton3" style="margin-bottom: 16px;" (click)="promeniMod()">Brisanje elementa</button>
+    </div>
+    <div *ngIf="mod==0">
+        <button class="btn mybutton4" style="margin-bottom: 5px;" (click)="promeniMod()">Dodavanje elementa</button>
+        <br>
+        <div *ngIf="oblik==0" class="input-group mb-3">
+            <button class="btn mybutton5" (click)="promeniElement()">Element: sto</button>
+            <div class="form-floating">
+                <input type="text" class="form-control" placeholder="" id="input_kapacitet" name="input_kapacitet"
+                    [(ngModel)]="noviKapacitet" (change)="proveriKapacitet()">
+                <label for="input_kapacitet">Kapacitet</label>
+            </div>
+            <!--<button class="btn mybutton1 rounded-end" (click)="proveriKapacitet()">Potvrdi broj</button>-->
+        </div>
+        <div *ngIf="oblik!=0" style="margin-bottom: 16px;">
+            <button *ngIf="oblik==1" class="btn mybutton5" (click)="promeniElement()">Element: kuhinja</button>
+            <button *ngIf="oblik==2" class="btn mybutton5" (click)="promeniElement()">Element: toalet</button>
+        </div>
+    </div>
+    <div class="overflow-auto">
+        <canvas id="canvas_admin" height="200" width="300">
+        </canvas>
+    </div>
+    <h3 class="error" *ngIf="rasporedGreska!=''">{{rasporedGreska}}</h3>
+    <p class="error" *ngFor="let fg of formatGreske">{{fg}}</p>
+
+</div>

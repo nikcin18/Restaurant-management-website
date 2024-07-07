@@ -1,0 +1,65 @@
+<nav class="navbar navbar-expand-lg mybgcolor2 navbar-light">
+    <div class="container">
+        <a routerLink="./" class="navbar-brand mycolor6 myfont2">
+            &nbsp;&nbsp;Kutak dobre hrane&nbsp;&nbsp;
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav"
+            aria-label="Expand Navigation" aria-expanded="false">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="nav">
+            <ul class="navbar-nav" style="white-space: nowrap;">
+                <li class="nav-item">
+                    <a routerLink="profil" class="nav-link"
+                        style="padding-left: 4px;padding-right: 4px;">&nbsp;&nbsp;Profil&nbsp;&nbsp;</a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="restorani" class="nav-link"
+                        style="padding-left: 4px;padding-right: 4px;">&nbsp;&nbsp;Restorani&nbsp;&nbsp;</a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="rezervacije" class="nav-link"
+                        style="padding-left: 4px;padding-right: 4px;">&nbsp;&nbsp;Rezervacije&nbsp;&nbsp;</a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="dostava" class="nav-link"
+                        style="padding-left: 4px;padding-right: 4px;">&nbsp;&nbsp;Dostava hrane&nbsp;&nbsp;</a>
+                </li>
+                <!--<li class="nav-item">
+                    <a routerLink="promena" class="nav-link"
+                        style="padding-left: 4px;padding-right: 4px;">&nbsp;&nbsp;Promena lozinke&nbsp;&nbsp;</a>
+                </li>-->
+                <li class="nav-item">
+                    <a routerLink="./../home/login" class="nav-link"
+                        style="padding-left: 4px;padding-right: 4px;">&nbsp;&nbsp;Izloguj se&nbsp;&nbsp;</a>
+                </li>
+            </ul>
+            <hr>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" style="padding-left: 8px;padding-right: 8px;">{{gost.kor_ime}}
+                        <img *ngIf="gost.slika.length>0" [src]="gost.slika"
+                            style="border: 1px solid black;max-height: 30px;width: auto;">
+                        <img *ngIf="gost.slika.length==0" src="../../../../assets/images/bez_slike.png"
+                            style="border: 1px solid black;max-height: 30px;width: auto;">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-1 col-xl-2 mybgcolor3">
+
+        </div>
+        <div class="col-lg-10 col-xl-8 col-12" style="min-height: calc(100vh - 75px);">
+            <br>
+            <router-outlet></router-outlet>
+            <br>
+        </div>
+        <div class="col-lg-1 col-xl-2 mybgcolor3">
+
+        </div>
+    </div>
+</div>

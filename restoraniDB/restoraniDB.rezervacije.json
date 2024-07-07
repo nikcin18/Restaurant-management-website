@@ -1,0 +1,345 @@
+[{
+  "_id": {
+    "$oid": "66718902f1acf31145deac7b"
+  },
+  "id": 1,
+  "datum_prijave": {
+    "$numberLong": "1718716674004"
+  },
+  "dan_posete": 19895,
+  "pocetak": 660,
+  "kraj": 840,
+  "gost": "mare",
+  "restoran": 9,
+  "ime_prezime": "Marko Markovic",
+  "naziv_restorana": "Go Sushi",
+  "adresa_restorana": "Zicka 1 Beograd",
+  "sto": 0,
+  "broj_ljudi": 7,
+  "komentar": "",
+  "status": "u toku",
+  "konobar": "bilja",
+  "zahtevi": "rodjendanska pesma"
+},
+{
+  "_id": {
+    "$oid": "66718928f1acf31145dead30"
+  },
+  "id": 2,
+  "datum_prijave": {
+    "$numberLong": "1718716712641"
+  },
+  "dan_posete": 19893,
+  "pocetak": 660,
+  "kraj": 840,
+  "gost": "mare",
+  "restoran": 9,
+  "ime_prezime": "Marko Markovic",
+  "naziv_restorana": "Go Sushi",
+  "adresa_restorana": "Zicka 1 Beograd",
+  "sto": 3,
+  "broj_ljudi": 5,
+  "komentar": "",
+  "status": "neobradjena",
+  "konobar": "",
+  "zahtevi": ""
+},
+{
+  "_id": {
+    "$oid": "66718940f1acf31145dead68"
+  },
+  "id": 3,
+  "datum_prijave": {
+    "$numberLong": "1718716736710"
+  },
+  "dan_posete": 19893,
+  "pocetak": 660,
+  "kraj": 840,
+  "gost": "mare",
+  "restoran": 9,
+  "ime_prezime": "Marko Markovic",
+  "naziv_restorana": "Go Sushi",
+  "adresa_restorana": "Zicka 1 Beograd",
+  "sto": 3,
+  "broj_ljudi": 3,
+  "komentar": "",
+  "status": "u toku",
+  "konobar": "bilja",
+  "zahtevi": "dodatni sto"
+},
+{
+  "_id": {
+    "$oid": "6671895ef1acf31145dead9f"
+  },
+  "id": 4,
+  "datum_prijave": {
+    "$numberLong": "1718716766093"
+  },
+  "dan_posete": 19895,
+  "pocetak": 1380,
+  "kraj": 120,
+  "gost": "mare",
+  "restoran": 9,
+  "ime_prezime": "Marko Markovic",
+  "naziv_restorana": "Go Sushi",
+  "adresa_restorana": "Zicka 1 Beograd",
+  "sto": 11,
+  "broj_ljudi": 4,
+  "komentar": "",
+  "status": "u toku",
+  "konobar": "bilja",
+  "zahtevi": "pogled na bastu"
+},
+{
+  "_id": {
+    "$oid": "66718aebf1acf31145deb0f0"
+  },
+  "id": 5,
+  "datum_prijave": {
+    "$numberLong": "1718717163551"
+  },
+  "dan_posete": 19892,
+  "pocetak": 1260,
+  "kraj": 1440,
+  "gost": "mirko",
+  "restoran": 1,
+  "ime_prezime": "Mirko Mirkovic",
+  "naziv_restorana": "Zapata (Vukov spomenik)",
+  "adresa_restorana": "Vojvode Bogdana 13 Beograd Srbija",
+  "sto": 1,
+  "broj_ljudi": 3,
+  "komentar": "",
+  "status": "neobradjena",
+  "konobar": "",
+  "zahtevi": "necu doci sigurno"
+},
+{
+  "_id": {
+    "$oid": "66718b2cf1acf31145deb171"
+  },
+  "id": 6,
+  "datum_prijave": {
+    "$numberLong": "1718717228427"
+  },
+  "dan_posete": 19892,
+  "pocetak": 1080,
+  "kraj": 1260,
+  "gost": "mirko",
+  "restoran": 1,
+  "ime_prezime": "Mirko Mirkovic",
+  "naziv_restorana": "Zapata (Vukov spomenik)",
+  "adresa_restorana": "Vojvode Bogdana 13 Beograd Srbija",
+  "sto": 0,
+  "broj_ljudi": 3,
+  "komentar": "",
+  "status": "u toku",
+  "konobar": "mira",
+  "zahtevi": "otkazacu rezervaciju"
+},
+{
+  "_id": {
+    "$oid": "66718b32f1acf31145deb187"
+  },
+  "id": 7,
+  "datum_prijave": {
+    "$numberLong": "1718717234583"
+  },
+  "dan_posete": 19892,
+  "pocetak": 1080,
+  "kraj": 1260,
+  "gost": "mirko",
+  "restoran": 1,
+  "ime_prezime": "Mirko Mirkovic",
+  "naziv_restorana": "Zapata (Vukov spomenik)",
+  "adresa_restorana": "Vojvode Bogdana 13 Beograd Srbija",
+  "sto": 1,
+  "broj_ljudi": 3,
+  "komentar": "",
+  "status": "u toku",
+  "konobar": "mira",
+  "zahtevi": "otkazacu rezervaciju"
+},
+{
+  "_id": {
+    "$oid": "66718b39f1acf31145deb19d"
+  },
+  "id": 8,
+  "datum_prijave": {
+    "$numberLong": "1718717241409"
+  },
+  "dan_posete": 19892,
+  "pocetak": 1080,
+  "kraj": 1260,
+  "gost": "mirko",
+  "restoran": 1,
+  "ime_prezime": "Mirko Mirkovic",
+  "naziv_restorana": "Zapata (Vukov spomenik)",
+  "adresa_restorana": "Vojvode Bogdana 13 Beograd Srbija",
+  "sto": 2,
+  "broj_ljudi": 3,
+  "komentar": "",
+  "status": "neobradjena",
+  "konobar": "",
+  "zahtevi": "otkazacu rezervaciju"
+},
+{
+  "_id": {
+    "$oid": "66718bd4f1acf31145deb277"
+  },
+  "id": 9,
+  "datum_prijave": {
+    "$numberLong": "1718717396002"
+  },
+  "dan_posete": 19893,
+  "pocetak": 600,
+  "kraj": 780,
+  "gost": "mirko",
+  "restoran": 1,
+  "ime_prezime": "Mirko Mirkovic",
+  "naziv_restorana": "Zapata (Vukov spomenik)",
+  "adresa_restorana": "Vojvode Bogdana 13 Beograd Srbija",
+  "sto": 2,
+  "broj_ljudi": 3,
+  "komentar": "",
+  "status": "u toku",
+  "konobar": "dzoni",
+  "zahtevi": "otkazacu ovo"
+},
+{
+  "_id": {
+    "$oid": "66718be7f1acf31145deb29f"
+  },
+  "id": 10,
+  "datum_prijave": {
+    "$numberLong": "1718717415881"
+  },
+  "dan_posete": 19893,
+  "pocetak": 660,
+  "kraj": 840,
+  "gost": "mirko",
+  "restoran": 1,
+  "ime_prezime": "Mirko Mirkovic",
+  "naziv_restorana": "Zapata (Vukov spomenik)",
+  "adresa_restorana": "Vojvode Bogdana 13 Beograd Srbija",
+  "sto": 3,
+  "broj_ljudi": 3,
+  "komentar": "",
+  "status": "u toku",
+  "konobar": "dzoni",
+  "zahtevi": "otkazacu ovo"
+},
+{
+  "_id": {
+    "$oid": "66718bfaf1acf31145deb2e9"
+  },
+  "id": 11,
+  "datum_prijave": {
+    "$numberLong": "1718717434884"
+  },
+  "dan_posete": 19893,
+  "pocetak": 720,
+  "kraj": 900,
+  "gost": "mirko",
+  "restoran": 1,
+  "ime_prezime": "Mirko Mirkovic",
+  "naziv_restorana": "Zapata (Vukov spomenik)",
+  "adresa_restorana": "Vojvode Bogdana 13 Beograd Srbija",
+  "sto": 10,
+  "broj_ljudi": 1,
+  "komentar": "",
+  "status": "u toku",
+  "konobar": "dzoni",
+  "zahtevi": "otkazacu ovo"
+},
+{
+  "_id": {
+    "$oid": "66718c06f1acf31145deb2ff"
+  },
+  "id": 12,
+  "datum_prijave": {
+    "$numberLong": "1718717446422"
+  },
+  "dan_posete": 19893,
+  "pocetak": 720,
+  "kraj": 900,
+  "gost": "mirko",
+  "restoran": 1,
+  "ime_prezime": "Mirko Mirkovic",
+  "naziv_restorana": "Zapata (Vukov spomenik)",
+  "adresa_restorana": "Vojvode Bogdana 13 Beograd Srbija",
+  "sto": 11,
+  "broj_ljudi": 1,
+  "komentar": "",
+  "status": "u toku",
+  "konobar": "dzoni",
+  "zahtevi": "otkazacu ovo"
+},
+{
+  "_id": {
+    "$oid": "66718d25f1acf31145deb4c0"
+  },
+  "id": 13,
+  "datum_prijave": {
+    "$numberLong": "1718717733181"
+  },
+  "dan_posete": 19893,
+  "pocetak": 720,
+  "kraj": 900,
+  "gost": "mirko",
+  "restoran": 1,
+  "ime_prezime": "Mirko Mirkovic",
+  "naziv_restorana": "Zapata (Vukov spomenik)",
+  "adresa_restorana": "Vojvode Bogdana 13 Beograd Srbija",
+  "sto": 10,
+  "broj_ljudi": 2,
+  "komentar": "",
+  "status": "neobradjena",
+  "konobar": "",
+  "zahtevi": "vec zauzet sto"
+},
+{
+  "_id": {
+    "$oid": "66718ddef1acf31145deb72e"
+  },
+  "id": 14,
+  "datum_prijave": {
+    "$numberLong": "1718717918162"
+  },
+  "dan_posete": 20263,
+  "pocetak": 480,
+  "kraj": 660,
+  "gost": "mare",
+  "restoran": 1,
+  "ime_prezime": "Marko Markovic",
+  "naziv_restorana": "Zapata (Vukov spomenik)",
+  "adresa_restorana": "Vojvode Bogdana 13 Beograd Srbija",
+  "sto": -1,
+  "broj_ljudi": 3,
+  "komentar": "2025. godina",
+  "status": "odbijena",
+  "konobar": "",
+  "zahtevi": "odbiti ovo"
+},
+{
+  "_id": {
+    "$oid": "66718de3f1acf31145deb743"
+  },
+  "id": 15,
+  "datum_prijave": {
+    "$numberLong": "1718717923716"
+  },
+  "dan_posete": 20264,
+  "pocetak": 480,
+  "kraj": 660,
+  "gost": "mare",
+  "restoran": 1,
+  "ime_prezime": "Marko Markovic",
+  "naziv_restorana": "Zapata (Vukov spomenik)",
+  "adresa_restorana": "Vojvode Bogdana 13 Beograd Srbija",
+  "sto": -1,
+  "broj_ljudi": 3,
+  "komentar": "",
+  "status": "neobradjena",
+  "konobar": "",
+  "zahtevi": "odbiti ovo"
+}]

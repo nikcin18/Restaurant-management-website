@@ -1,0 +1,12 @@
+<div class="rounded" style="border:1px dashed rgb(100, 100, 100);padding: 3px;">
+    <h2 class="mycolor2 myfont1">Procentualna raspodela rezervacija po danima</h2>
+    <h3 class="warning" *ngIf="greska">Greska pri dohvatanju podataka</h3>
+    <h3 class="warning" *ngIf="!greska && suma==0">Nema rezervacija iz tog perioda</h3>
+    <div *ngIf="!greska && suma>0">
+        <ngx-charts-bar-vertical [results]="podaci" [gradient]="false" [xAxis]="true" [yAxis]="true" [legend]="false"
+            [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxisLabel]="'Dani u nedelji'"
+            [yAxisLabel]="'Udeo rezervacija u procentima'" [barPadding]="0" [customColors]="customColors"
+            [showGridLines]="true" [noBarWhenZero]="false" [showDataLabel]="true">
+        </ngx-charts-bar-vertical>
+    </div>
+</div>

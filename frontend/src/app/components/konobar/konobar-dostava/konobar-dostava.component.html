@@ -1,0 +1,59 @@
+<h1 class="mycolor1 myfont1">Trenutne narudzbine</h1>
+<h2 class="warning" *ngIf="narudzbine.length==0">Nema neobradjenih narudzbina</h2>
+<div class="container table-responsive no_padding" *ngIf="narudzbine.length>0"
+    style="max-height: 33vh;overflow-y: auto;border:1px solid black">
+    <table class="with_borders table with_padding no_margin">
+        <tr>
+            <th>&nbsp;Gost&nbsp;</th>
+            <th>&nbsp;Datum i vreme slanja&nbsp;</th>
+            <th>&nbsp;Sadrzaj&nbsp;</th>
+            <th>&nbsp;Adresa dostave&nbsp;</th>
+            <th>&nbsp;Ukupan racun&nbsp;</th>
+            <th>&nbsp;Opcije&nbsp;</th>
+        </tr>
+        <tr *ngIf="narudzbine.length==0">
+            <td colspan="3">Nema narudzbina</td>
+        </tr>
+        <tr *ngFor="let n of narudzbine">
+            <td>&nbsp;{{n.ime_prezime}} ({{n.gost}})&nbsp;</td>
+            <td>&nbsp;{{odrediDatum(n.datum)}}&nbsp;</td>
+            <td>
+                <p *ngFor="let jelo of n.sadrzaj" class="no_margin">
+                    {{jelo}}
+                </p>
+            </td>
+            <td>&nbsp;{{n.adresa_gosta}}&nbsp;</td>
+            <td>&nbsp;{{n.racun}}&nbsp;</td>
+            <td style="align-items: center;">
+                <span *ngIf=" izborNarudzbina!=n.id" style="display: inline-block;">
+                    &nbsp;
+                    <button class="btn mybutton3" (click)="odbijNarudzbinu(n.id)">Odbij</button>
+                    &nbsp;
+                    <button class="btn mybutton4" (click)="upit(n.id)">Prihvati</button>
+                    &nbsp;
+                </span>
+                <div class="input-group" *ngIf="izborNarudzbina==n.id" style="flex-wrap: nowrap;">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="procenjeno_vreme"
+                            style="border-top-right-radius: 0 !important;border-bottom-right-radius: 0 !important;">Procenjeno
+                            vreme dostave</label>
+                    </div>
+                    <select class="custom-select" id="procenjeno_vreme" [(ngModel)]="izborVrednost">
+                        <option value="20">Za 20-30 minuta</option>
+                        <option value="40">Za 30-40 minuta</option>
+                        <option value="60">Za 50-60 minuta</option>
+                    </select>
+                    <div class="input-group-append">
+                        <button class="btn mybutton4" style="border-radius: 0;"
+                            (click)="prihvatiNarudzbinu()">Prihvati</button>
+                    </div>
+                    <div class="input-group-append">
+                        <button class="btn mybutton3"
+                            style="border-top-left-radius: 0 !important;border-bottom-left-radius: 0 !important;"
+                            (click)="nazad()">Nazad</button>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>

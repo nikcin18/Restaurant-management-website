@@ -1,0 +1,43 @@
+<h1 class="mycolor1 myfont1">Dodaj novi restoran</h1>
+<form>
+    <div class="form-floating">
+        <input type="text" class="form-control" placeholder="" id="input_naziv" name="input_naziv" [(ngModel)]="naziv">
+        <label for="input_naziv">Naziv restorana</label>
+    </div>
+    <br>
+    <div class="form-floating">
+        <input type="text" class="form-control" placeholder="" id="input_tip" name="input_tip" [(ngModel)]="tip">
+        <label for="input_tip">Tip restorana</label>
+    </div>
+    <br>
+    <div class="form-floating">
+        <textarea class="form-control" placeholder="" id="input_opis" name="input_opis" [(ngModel)]="opis"></textarea>
+        <label for="input_opis">Kratak opis restorana</label>
+    </div>
+    <br>
+    <div class="form-floating">
+        <input type="text" class="form-control" placeholder="" id="input_adresa" name="input_adresa"
+            [(ngModel)]="adresa">
+        <label for="input_adresa">Adresa restorana</label>
+    </div>
+    <br>
+    <div class="form-floating">
+        <input type="text" class="form-control" placeholder="" id="input_kontakt" name="input_kontakt"
+            [(ngModel)]="kontakt">
+        <label for="input_kontakt">Kontakt osoba</label>
+    </div>
+    <br>
+</form>
+
+<app-admin-raspored></app-admin-raspored>
+<br>
+<app-admin-radno-vreme></app-admin-radno-vreme>
+<br>
+<button class="btn mybutton1" (click)="potvrdi()">Potvrdi</button>
+<br>
+<br>
+<h3 *ngFor="let g of greskaPoruke" class="error">
+    {{g}}
+</h3>
+<h3 *ngIf="poruka.length>0" class="message">{{poruka}}</h3>
+<br>

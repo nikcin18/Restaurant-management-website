@@ -1,0 +1,20 @@
+<h1 class="mycolor1 myfont1">Prijava administratora</h1>
+<form>
+    <div class="form-floating">
+        <input type="text" class="form-control" placeholder=""
+        id="input_kor_ime" name="input_kor_ime" [(ngModel)]="kor_ime">
+        <label for="input_kor_ime">Korisnicko ime</label>
+    </div>
+    <br>
+    <div class="form-floating">
+        <input type="password" class="form-control" placeholder=""
+        id="input_lozinka" name="input_lozinka" [(ngModel)]="lozinka">
+        <label for="input_lozinka">Lozinka</label>
+    </div>
+    <br>
+    <button class="btn mybutton1" (click)="login()">
+        Potvrdi
+    </button>
+</form>
+<br>
+<h3 class="error myfont1" *ngIf="greska.length>0">{{greska}}</h3>

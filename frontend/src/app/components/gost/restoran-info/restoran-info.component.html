@@ -1,0 +1,167 @@
+<h1 class="mycolor1 myfont1">Restoran {{restoran.naziv}}</h1>
+<button class="btn mybutton1" (click)="nazad()">Nazad</button>
+<br><br>
+<div class="rounded" style="border:1px dashed rgb(100, 100, 100);padding: 3px;">
+    <h2 class="mycolor2 myfont1">Informacije o restoranu</h2>
+    <p *ngIf="restoran.opis.length>0" class="mycolor5" style="font-style: italic;margin-bottom: 10px;">{{restoran.opis}}</p>
+    <h3>
+        <span class="mycolor6">Tip: </span>{{restoran.tip}}
+    </h3>
+    <h3>
+        <span class="mycolor6">Kontakt: </span>{{restoran.kontakt}}
+    </h3>
+    <h3>
+        <span class="mycolor6">Adresa: </span>{{restoran.adresa}}
+    </h3>
+    <div class="embed-responsive">
+        <iframe width=" 80%" height="40%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+            [src]="mapaUrl(restoran.adresa)|safe" style="border:1px solid black">
+            <a href="https://www.gps.ie/">
+                gps systems
+            </a>
+        </iframe>
+    </div>
+    <h3 class="mycolor6">Komentari gostiju</h3>
+    <div class="container table-responsive no_padding no_margin" *ngIf="restoran.ocene.length>0"
+        style="max-height: 33vh;overflow-y: auto;border:1px solid black;">
+        <table class="with_borders table no_margin">
+            <tr>
+                <th>&nbsp;Dao gost&nbsp;</th>
+                <th colspan="2">&nbsp;Ocena&nbsp;</th>
+                <th>&nbsp;Komentar&nbsp;</th>
+            </tr>
+            <tr *ngFor="let o of restoran.ocene">
+                <td style="border-right: 1px solid black !important;">&nbsp;{{o.gost}}&nbsp;</td>
+                <td style="border-right: none;">&nbsp;{{o.broj}}&nbsp;</td>
+                <td style="border-left: none; padding-bottom: 3px;padding-top: 3px;">
+                    &nbsp;
+                    <img *ngFor="let z of zvezde(o.broj)" [src]="'../../../../assets/images/zvezda'+z+'.jpg'"
+                        width="40px" height="40px">
+                    &nbsp;
+                </td>
+                <td>&nbsp;{{o.tekst}}&nbsp;</td>
+            </tr>
+            <tr *ngIf="restoran.ocene.length==0">
+                <td colspan="4">Nema komentara</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<br>
+<div class="rounded" style="border:1px dashed rgb(100, 100, 100);padding: 3px;">
+    <h2 class="mycolor2 myfont1">Nova rezervacija (bez biranja stola)</h2>
+    <form>
+        <div class="form-floating">
+            <input type="datetime-local" class="form-control" placeholder="" id="input_rez1_datum"
+                name="input_rez1_datum" [(ngModel)]="datum_vreme1">
+            <label for="input_rez1_datum">Datum i vreme</label>
+        </div>
+        <br>
+        <div class="form-floating">
+            <input type="text" class="form-control" placeholder="" id="input_rez1_broj_ljudi"
+                name="input_rez1_broj_ljudi" [(ngModel)]="broj_ljudi1">
+            <label for="input_rez1_broj_ljudi">Broj osoba</label>
+        </div>
+        <br>
+        <div class="form-floating">
+            <input type="text" class="form-control" placeholder="" id="input_rez1_zahtevi" name="input_rez1_zahtevi"
+                [(ngModel)]="zahtevi1">
+            <label for="input_rez1_zahtevi">Dodatni zahtevi</label>
+        </div>
+        <br>
+        <button class="btn mybutton1" (click)="rezervacija1()">Posalji</button>
+        <h3 class="error" *ngIf="rezervacija1_greska.length>0">{{rezervacija1_greska}}</h3>
+        <h3 class="message" *ngIf="rezervacija1_poruka.length>0">{{rezervacija1_poruka}}</h3>
+    </form>
+</div>
+<br>
+<div class="rounded" style="border:1px dashed rgb(100, 100, 100);padding: 3px;">
+    <h2 class="mycolor2 myfont1">Nova rezervacija (sa biranjem stola)</h2>
+    <form>
+        <div class="form-floating">
+            <input type="datetime-local" class="form-control" placeholder="" id="input_rez2_datum"
+                name="input_rez2_datum" [(ngModel)]="datum_vreme2">
+            <label for="input_rez2_datum">Datum i vreme</label>
+        </div>
+        <br>
+        <button class="btn mybutton1" (click)="proveriStolove()">Proveri stolove</button>
+    </form>
+    <div *ngIf="izabran_sto>-1">
+        <br>
+        <div class="form-floating">
+            <input type="text" class="form-control" placeholder="" id="input_rez2_broj_ljudi"
+                name="input_rez2_broj_ljudi" [(ngModel)]="broj_ljudi2">
+            <label for="input_rez2_broj_ljudi">Broj osoba</label>
+        </div>
+        <br>
+        <div class="form-floating">
+            <input type="text" class="form-control" placeholder="" id="input_rez2_zahtevi" name="input_rez2_zahtevi"
+                [(ngModel)]="zahtevi2">
+            <label for="input_rez2_zahtevi">Dodatni zahtevi</label>
+        </div>
+        <br>
+        <button class="btn mybutton1" (click)="rezervacija2()">Posalji</button>
+    </div>
+    <span *ngIf="rezervacija2_greska.length>0">
+        <br>
+        <h3 class="error">
+            {{rezervacija2_greska}}
+        </h3>
+    </span>
+    <span *ngIf="rezervacija2_poruka.length>0">
+        <br>
+        <h3 class="message">
+            {{rezervacija2_poruka}}
+        </h3>
+    </span>
+    <br>
+    <div class="overflow-auto">
+        <canvas id="canvas_gost" width="500" height="345" style="border: 1px solid black;">
+        </canvas>
+    </div>
+</div>
+<br>
+<div class="rounded" style="border:1px dashed rgb(100, 100, 100);padding: 3px;">
+    <h2 class="mycolor2 myfont1">Naruci iz restorana</h2>
+    <h3 class="warning" *ngIf="jela.length==0">Jelovnik je prazan</h3>
+    <div class="container table-responsive no_padding" *ngIf="jela.length>0"
+        style="max-height: 33vh;overflow-y: auto;border:1px solid black">
+        <table class="with_borders table with_padding no_margin">
+            <tr>
+                <th>&nbsp;Naziv jela&nbsp;</th>
+                <th>&nbsp;Slika&nbsp;</th>
+                <th>&nbsp;Sastojci&nbsp;</th>
+                <th>&nbsp;Cena (po kg/L)&nbsp;</th>
+                <th>&nbsp;Naruci jelo&nbsp;</th>
+            </tr>
+            <tr *ngFor="let i of range(0,jela.length)">
+                <td>&nbsp;{{jela[i].naziv}}&nbsp;</td>
+                <td>
+                    <img *ngIf="jela[i].slika.length>0" [src]="jela[i].slika" width="80px" height="80px">
+                    <img *ngIf="jela[i].slika.length==0" src="../../../../assets/images/bez_slike.png" width="80px"
+                        height="80px">
+                </td>
+                <td>&nbsp;{{jela[i].sastojci.join(", ")}}&nbsp;</td>
+                <td>&nbsp;{{jela[i].cena}}&nbsp;</td>
+                <td>
+                    <div class="input-group input-group-sm mb-3 no_margin" style=" flex-wrap: nowrap;">
+                        <input type="text" class="form-control-sm" placeholder="Unesite kolicinu (u kg/L)"
+                            aria-label="Recipient's username" aria-describedby="basic-addon2"
+                            [id]="'input_tip'+jela[i].id" [name]="'input_tip'+jela[i].id" [(ngModel)]="kolicine[i]">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn mybutton1 rounded-right" (click)="dodajUKorpu(i)"
+                                style="max-height: fit-content;border-top-left-radius: 0;border-bottom-left-radius: 0;"
+                                [id]="'dodaj'+jela[i].id">Potvrdi</button>
+                        </div>
+                    </div>
+                    <span style="color:red;margin: 0;display: inline-block;" *ngIf="greske[i]!=''">{{greske[i]}}</span>
+                    <span style="color:green;margin: 0;display: inline-block;"
+                        *ngIf="poruke[i]!=''">{{poruke[i]}}</span>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <br>
+    <button class="btn mybutton1" (click)="prikaziKorpu()">Prikazi korpu</button>
+</div>

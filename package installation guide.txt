@@ -1,0 +1,6 @@
+There are two packages used for project: Bootstrap and NgxCharts.
+In order to install them, you must execute the following commands in terminal with opened fronted folder:
+
+npm install bootstrap --save --force
+npm install @swimlane/ngx-charts --save --force
+npm install --save-dev @types/d3-shape @types/d3-scale @types/d3-selection --force

@@ -1,0 +1,40 @@
+<h1 class="mycolor1 myfont1">Dostave za gosta</h1>
+<div class="rounded" style="border:1px dashed rgb(100, 100, 100);padding: 5px;">
+    <h2 class="mycolor2 myfont1">Aktuelne dostave</h2>
+    <h3 class="warning" *ngIf="aktuelne.length==0">Nema aktuelnih dostava</h3>
+    <div class="container table-responsive no_padding" *ngIf="aktuelne.length>0"
+        style="max-height: 33vh;overflow-y: auto;border:1px solid black;">
+        <table class="with_borders table no_margin with_padding">
+            <tr>
+                <th>&nbsp;Naziv restorana&nbsp;</th>
+                <th>&nbsp;Status narudzbine&nbsp;</th>
+                <th>&nbsp;Procenjeno vreme&nbsp;</th>
+            </tr>
+            <tr *ngFor="let i of aktuelne">
+                <td>&nbsp;{{dostave[i].naziv_restorana}}&nbsp;</td>
+                <td>&nbsp;{{dostave[i].status}}&nbsp;</td>
+                <td>&nbsp;{{vreme[i]}}&nbsp;</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<br>
+<div class="rounded" style="border:1px dashed rgb(100, 100, 100);padding: 5px;">
+    <h2 class="mycolor2 myfont1">Arhivirane dostave</h2>
+    <h3 class="warning" *ngIf="arhivirane.length==0">Nema arhiviranih dostava</h3>
+    <div class="container table-responsive no_padding" *ngIf="arhivirane.length>0"
+        style="max-height: 33vh;overflow-y: auto;border:1px solid black;">
+        <table class="with_borders table no_margin with_padding">
+            <tr>
+                <th>Datum narudzbine</th>
+                <th>Iznos</th>
+                <th>Naziv restorana</th>
+            </tr>
+            <tr *ngFor="let i of arhivirane">
+                <td>{{vreme[i]}}</td>
+                <td>{{dostave[i].racun}}</td>
+                <td>{{dostave[i].naziv_restorana}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
